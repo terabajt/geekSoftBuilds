@@ -1,0 +1,40 @@
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgb(42, 56, 71); /* Main background color */
+  color: rgb(198, 210, 219); /* Font color */
+}
+
+/* Table header */
+thead {
+  background-color: rgba(14, 15, 26, 0.25); /* Row background color */
+}
+
+/* Table body */
+tbody {
+  /* Row styles */
+  tr {
+    background-color: rgba(14, 15, 26, 0.25); /* Row background color */
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(53, 71, 89, 0.5); /* Row background color on hover */
+    }
+  }
+
+  /* Profit color */
+  .positive-profit {
+    color: rgb(60, 193, 149); /* Color for profit greater than 0 */
+  }
+
+  .negative-profit {
+    color: rgb(249, 76, 76); /* Color for profit less than 0 */
+  }
+}
+
+/* Styles for action icons */
+td .action-icon {
+  cursor: pointer;
+  color: rgb(198, 210, 219); /* Font color */
+}

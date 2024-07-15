@@ -1,1 +1,74 @@
-<p>order-list works!</p>
+<!-- Toggle Theme Button -->
+<mat-slide-toggle class="toggle-container" (change)="toggleTheme()">
+  {{ darkThemeEnabled ? 'Włącz motyw jasny' : 'Włącz motyw ciemny' }}
+</mat-slide-toggle>
+<table [ngClass]="{'dark-theme': darkThemeEnabled}">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Count</th>
+      <th>Open Price</th>
+      <th>Swap</th>
+      <th>Profit</th>
+      <th>Size</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let group of groupedOrders">
+      <tr>
+        <td (click)="toggleOrders(group)">
+          <span *ngIf="!group.showOrders">
+            <mat-icon>keyboard_arrow_down</mat-icon>
+          </span>
+          <span *ngIf="group.showOrders">
+            <mat-icon>keyboard_arrow_up</mat-icon>
+          </span>
+          {{ group.symbol }} <span matBadge="{{ group.orders.length }}" matBadgeColor="primary" matBadgeSize="small"
+            matBadgeOverlap="false" matBadgePosition="above">{{
+            group.symbol }}</span>
+        </td>
+        <td>{{ group.openPrice.toFixed(2) }}</td>
+        <td>{{ group.swap.toFixed(2) }}</td>
+        <td>{{ group.profit.toFixed(2) }}</td>
+        <td>{{ group.size }}</td>
+        <td><mat-icon (click)="removeGroup(group.symbol)">delete_sweep</mat-icon></td>
+      </tr>
+      <tr *ngIf="group.showOrders">
+        <td colspan="7">
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Side</th>
+                <th>Size</th>
+                <th>Open Time</th>
+                <th>Open Price</th>
+                <th>Swap</th>
+                <th>Profit</th>
+                <th>Close Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let order of group.orders">
+                <tr>
+                  <td>{{ order.id }}</td>
+                  <td>{{ order.side }}</td>
+                  <td>{{ order.size }}</td>
+                  <td>{{ order.openTime | date:'dd.MM.yyyy HH:mm:ss' }}</td>
+                  <td>{{ order.openPrice }}</td>
+                  <td>{{ order.swap }}</td>
+                  <td>{{ order.profit ? order.profit.toFixed(2) : '0' }}</td>
+                  <td>{{ order.closePrice }}</td>
+                  <td><mat-icon (click)="removeOrder(group, order)">delete</mat-icon></td>
+
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
