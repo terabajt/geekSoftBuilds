@@ -9,11 +9,12 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { WebSocketService } from '../../services/websocket.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { TableHeaderComponent } from './table-header/table-header.component';
 
 @Component({
 	selector: 'app-order-list',
 	standalone: true,
-	imports: [CommonModule, MatIconModule, MatSnackBarModule, MatBadgeModule, MatSlideToggleModule],
+	imports: [CommonModule, MatIconModule, MatSnackBarModule, MatBadgeModule, MatSlideToggleModule, TableHeaderComponent],
 	templateUrl: './order-list.component.html',
 	styleUrls: ['./order-list.component.scss'],
 })
