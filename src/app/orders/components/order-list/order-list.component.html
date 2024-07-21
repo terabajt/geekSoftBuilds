@@ -28,16 +28,8 @@
         <td><mat-icon (click)="removeGroup(group.symbol)">delete_sweep</mat-icon></td>
       </tr>
       <ng-container *ngFor="let order of group.orders">
-        <tr *ngIf="group.showOrders">
-          <td></td>
-          <td>{{ order.id }}</td>
-          <td>{{ order.side }}</td>
-          <td>{{ order.size }}</td>
-          <td>{{ order.openTime | date:'dd.MM.yyyy HH:mm:ss' }}</td>
-          <td>{{ order.openPrice }}</td>
-          <td>{{ order.swap }}</td>
-          <td>{{ order.profit ? order.profit.toFixed(2) : '0' }}</td>
-          <td><mat-icon class="small-icon" (click)="removeOrder(group, order)">delete</mat-icon></td>
+        <tr *ngIf="group.showOrders" app-table-orders [order]="order" [group]="group"
+          (removeOrder)="removeOrder($event)">
         </tr>
       </ng-container>
     </ng-container>
