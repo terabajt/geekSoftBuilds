@@ -1,0 +1,11 @@
+<tr>
+  <td></td>
+  <td>{{ order.id }}</td>
+  <td>{{ order.side }}</td>
+  <td>{{ order.size }}</td>
+  <td>{{ order.openTime | date : dateFormat }}</td>
+  <td>{{ order.openPrice }}</td>
+  <td>{{ order.swap }}</td>
+  <td>{{ formatPrice(order) }}</td>
+  <td><mat-icon class="small-icon" (click)="orderRemoved()">delete</mat-icon></td>
+</tr>

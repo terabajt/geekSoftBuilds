@@ -9,3 +9,12 @@ export interface Order {
 	closePrice: number;
 	profit: number;
 }
+
+export interface OrderGroup {
+  symbol: string;
+  orders: Order[];
+  openPrice: number;
+  swap: number;
+  profit: number;
+  size: number;
+}
