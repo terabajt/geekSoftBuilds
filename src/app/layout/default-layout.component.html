@@ -1,0 +1,7 @@
+<div class="mat-elevation-z2" style="text-align: center; padding: 16px;">
+  <h1>Aplikacja zlecenia</h1>
+  <mat-slide-toggle class="toggle-container" [checked]="!lightThemeEnabled()" (change)="toggleTheme()">
+    {{ lightThemeEnabled() ? 'Włącz motyw ciemny' : 'Włącz motyw jasny' }}
+  </mat-slide-toggle>
+  <router-outlet></router-outlet>
+</div>

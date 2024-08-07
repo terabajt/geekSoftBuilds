@@ -1,14 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import {DefaultLayoutComponent} from "./layout/default-layout.component";
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, CommonModule],
+	imports: [DefaultLayoutComponent],
 	templateUrl: './app.component.html',
-	styleUrl: './app.component.scss',
 })
-export class AppComponent {
-	title = 'geekSoftBuilds';
-}
+export class AppComponent {}

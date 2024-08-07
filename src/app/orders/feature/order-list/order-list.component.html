@@ -1,0 +1,31 @@
+<table [ngClass]="{'dark-theme': darkThemeEnabled()}">
+  <app-table-header></app-table-header>
+  <tbody>
+    <ng-container *ngFor="let group of (orderGroups$ | async)">
+      <tr>
+        <td (click)="toggleOrders(group)">
+          <span *ngIf="!showOrders(group)">
+            <mat-icon>keyboard_arrow_down</mat-icon>
+          </span>
+          <span *ngIf="showOrders(group)">
+            <mat-icon>keyboard_arrow_up</mat-icon>
+          </span>
+          {{ group.symbol }} <span matBadge="{{ group.orders.length }}" matBadgeColor="primary" matBadgeSize="small"
+            matBadgeOverlap="false" matBadgePosition="above">{{
+            group.symbol }}</span>
+        </td>
+        <td></td>
+        <td></td>
+        <td>{{ group.size}}</td>
+        <td></td>
+        <td>{{ group.openPrice }}</td>
+        <td>{{ group.swap.toFixed(2) }}</td>
+        <td>{{ group.profit.toFixed(2) }}</td>
+        <td><mat-icon (click)="removeGroup(group)">delete_sweep</mat-icon></td>
+      </tr>
+      <ng-container *ngIf="showOrders(group)">
+        <app-table-order *ngFor="let order of group.orders" [order]="order" [group]="group" (removeOrder)="removeOrder($event)"></app-table-order>
+      </ng-container>
+    </ng-container>
+  </tbody>
+</table>
